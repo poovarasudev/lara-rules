@@ -2,15 +2,13 @@
 
 namespace LaraRules\Rules;
 
+use Illuminate\Support\Facades\Input;
 use LaraRules\BaseRule;
 
-class TelephoneNumber extends BaseRule
+class SmallerThan extends BaseRule
 {
     /**
      * Determine if the validation rule passes.
-     *
-     * The telephone number must be 6 - 15 characters in length,
-     * and comprised entirely of integers.
      *
      * @param $attribute
      * @param $value
@@ -18,7 +16,7 @@ class TelephoneNumber extends BaseRule
      */
     public function passes($attribute, $value) : bool
     {
-        return preg_match('/^[0-9]{6,15}$/', $value) > 0;
+        return $value < Input::get($this->parameters[0]);
     }
 
     /**
@@ -28,8 +26,8 @@ class TelephoneNumber extends BaseRule
     public function message() : string
     {
         return $this->getLocalizedErrorMessage(
-            'telephone_number',
-            'The :attribute must be a valid telephone number (6 - 15 digits in length)'
+            'smaller_than',
+            'The :attribute must be smaller than ' . $this->parameters[0]
         );
     }
 }
