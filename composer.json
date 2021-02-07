@@ -1,0 +1,20 @@
+{
+    "name": "poovarasudev/lara-rules",
+    "description": "A package that provides a library of reusable Laravel validation rules",
+    "require": {
+        "php": "7.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Poovarasu",
+            "email": "spoovarasu1997@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LaraRules\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
